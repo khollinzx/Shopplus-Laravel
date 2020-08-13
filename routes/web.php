@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [
+    'uses' => 'Controllers\ProductController@getAllProduct',
+    'as' => 'product.index'
+]);
+
 
 Route::get('/login', function () {
     return view('pages.login');
@@ -29,6 +31,10 @@ Route::get('/cart', function () {
 
 Route::get('/profile', function () {
     return view('pages.profile');
+});
+
+Route::get('/single', function () {
+    return view('pages.single');
 });
 
 Route::get('/checkout', function () {

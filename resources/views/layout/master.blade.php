@@ -23,7 +23,9 @@
 
 <body id="page-top">
     @include('partial.navbar')
-    @yield('content');
+
+    @yield('content')
+
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
