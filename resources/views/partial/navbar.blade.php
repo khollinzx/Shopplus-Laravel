@@ -19,9 +19,9 @@
       </li>
     </ul>
         <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-primary text-white" href="login.html">Login<a>
+            <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-primary text-white" href="{{ route('user.login')}}">Login</a>
             </li>
-            <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-outline-primary" href="signup.html"> SignUp </a>
+            <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-outline-primary" href="{{ route('user.signup')}}"> SignUp </a>
             </li>
         </ul>
     <span class="navbar-text "><a href="#"><i class="fa fa-shopping-cart"></i>

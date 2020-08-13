@@ -17,13 +17,25 @@ Route::get('/', [
 ]);
 
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/signup', [
+    'uses' => 'Controllers\UserController@getSignup',
+    'as' => 'user.signup'
+]);
 
-Route::get('/signup', function () {
-    return view('pages.signup');
-});
+Route::post('/signup', [
+    'uses' => 'Controllers\UserController@postSignup',
+    'as' => 'user.signup'
+]);
+
+Route::get('/login', [
+    'uses' => 'Controllers\UserController@getLogin',
+    'as' => 'user.login'
+]);
+
+Route::post('/login', [
+    'uses' => 'Controllers\UserController@postLogin',
+    'as' => 'user.login'
+]);
 
 Route::get('/cart', function () {
     return view('pages.cart');
