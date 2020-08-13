@@ -5,7 +5,7 @@
         <div class="container mt-5">
             <div class="text-center">
             </div>
-            <div class="col-md-6 offset-3">
+            <div class="col-md-6 offset-md-3">
                 <h2 class="section-heading text-uppercase">Login</h2>
                 <form>
                     <div class="form-group">

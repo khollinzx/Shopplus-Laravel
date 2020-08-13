@@ -22,37 +22,7 @@
 </head>
 
 <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#page-top">ShopPlus+ Laravel</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars ml-1"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item hidden-xs hidden-sm"><a class="nav-link js-scroll-trigger " href="profile.html"
-                            id="navbarDropdown" role="button"> <i class="fas fa-user-alt"></i> Collins@gmail.com </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-primary text-white" href="login.html">Login<a>
-                    </li>
-
-                    <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-outline-primary" href="signup.html"> Sign
-                            Up</a>
-                    </li>
-                </ul>
-            </div>
-            <span class="navbar-text ml-5"><a href="#"><i class="fa fa-shopping-cart"></i> <sup
-                        class="badge badge-danger">1</sup> </a></span>
-        </div>
-    </nav>
-
+    @include('partial.navbar')
     @yield('content');
     <!-- Footer-->
     <footer class="footer py-4">
