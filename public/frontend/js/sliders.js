@@ -70,6 +70,12 @@ $(document).ready(function () {
             data: "add-item",
             success: function (response) {
                 $(".cartQunatity").html(response.qty);
+                Swal.fire({
+                    position: 'top-end',
+                    title: 'Item Has Been Added',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         });
     });

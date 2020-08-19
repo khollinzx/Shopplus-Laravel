@@ -5,7 +5,7 @@
         <div class="container mt-5">
             <div class="text-center">
             </div>
-            <div class="col-md-8 offset-2">
+            <div class="col-md-8 offset-md-2">
                 <h2 class="section-heading text-uppercase text-left">Profile</h2>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">

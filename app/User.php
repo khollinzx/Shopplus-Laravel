@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\Order;
+use App\Model\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany('App\Model\Order');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

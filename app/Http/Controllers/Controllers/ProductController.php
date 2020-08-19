@@ -16,7 +16,6 @@ class ProductController extends Controller
     public function getAllProduct()
     {
         //
-
         $products = Product::paginate(6);
         $lowpriceProduct = Product::inRandomOrder()->where("price", "<=", 8000)->limit(4)->get();
         return view('pages.home', ['products' => $products, 'lowpriceProduct' => $lowpriceProduct]);
@@ -39,6 +38,10 @@ class ProductController extends Controller
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         // dd($cart->totalQuantity);
+        if ($oldCart === null) {
+
+            return response()->json(['qty' => '0']);
+        }
         return response()->json(['qty' => $oldCart->totalQuantity]);
         // return redirect()->route('product.index');
     }

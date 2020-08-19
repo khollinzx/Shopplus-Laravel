@@ -15,14 +15,14 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            if (Session('alert_success')) {
-                alert()->success('SuccessAlert', Session('alert_success'));
-            } else if (Session('alert_error')) {
-                alert()->error('ErrorAlert', Session('alert_error'));
-            } else if (Session('toast_success')) {
-                toast(Session('toast_success'), 'success');
-            } else if (Session('toast_success')) {
-                toast(Session('toast_error'), 'error');
+            if (session('alert_success')) {
+                alert()->success('SuccessAlert', session('alert_success'));
+            } else if (session('alert_error')) {
+                alert()->error('ErrorAlert', session('alert_error'));
+            } else if (session('toast_success')) {
+                toast(session('toast_success'), 'success');
+            } else if (session('toast_error')) {
+                toast(session('toast_error'), 'error');
             }
 
             return $next($request);

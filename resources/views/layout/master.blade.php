@@ -57,6 +57,7 @@
     <!-- Core theme JS-->
     <script src="{{ asset('frontend/js/scripts.js') }}"></script>
     <script src="{{ asset('frontend/js/sliders.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     @include('sweetalert::alert')
     @yield('scripts')

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Model\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -18,11 +19,15 @@ class UserController extends Controller
 
     public function postSignup(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'fullname' => 'required',
             'email' => 'email|required|unique:users',
             'password' => 'required|confirmed|min:6'
         ]);
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->errors()->all()[0])->withInput();
+        }
 
         $user = new User();
         $user->email = $request->email;
@@ -48,16 +53,20 @@ class UserController extends Controller
 
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->errors()->all()[0])->withInput();
+        }
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('user.profile');
         }
 
-        return redirect()->route('user.login')->with('message', 'Invalid Email & Password');
+        return redirect()->route('user.login')->with('toast_error', 'Invalid Email & Password');
     }
 
     public function getProfile()

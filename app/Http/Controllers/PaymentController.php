@@ -20,14 +20,16 @@ class PaymentController extends Controller
      */
     public function redirectToGateway(Request $request)
     {
-        $validator = Validator::make($request, [
+        $validator = Validator::make($request->all(), [
             "name"  => 'required',
             "email" => 'required',
             "phone_no" => 'required',
             "shipping_address" => 'required'
         ]);
 
+
         if ($validator->fails()) {
+            // dd($validator->errors()->all()[0]);
             return back()->with('toast_error', $validator->errors()->all()[0])->withInput();
         }
 

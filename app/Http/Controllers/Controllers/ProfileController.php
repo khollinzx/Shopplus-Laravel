@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -20,11 +21,15 @@ class ProfileController extends Controller
 
     public function postUserProfile(Request $request, $id)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'fullname' => 'required',
             'mobile_no' => 'required',
             'address' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->errors()->all()[0])->withInput();
+        }
 
         $profile = Profile::find($id);
         $profile->fullname = $request->fullname;
@@ -32,6 +37,6 @@ class ProfileController extends Controller
         $profile->address = $request->address;
         $profile->save();
 
-        return redirect()->route('user.profile');
+        return redirect()->route('user.profile')->with('toast_success', 'Profile Updated');
     }
 }

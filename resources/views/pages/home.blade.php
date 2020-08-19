@@ -20,7 +20,7 @@
                             <img class="img-fluid" src="{{ $product->photo }}" alt="" />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">{{ $product->title}}</div>
+                            <div class="portfolio-caption-heading">{{ $product->title }}</div>
                             <h4 class="portfolio-caption-subheading text-muted"><i>&#8358</i>{{ number_format($product->price,2) }}</h4>
                             <div class="row" data-id="{{$product->id}} ">
                                 <button  class="btn btn-outline-primary btn-lg btn-block text-uppercase cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>

@@ -1,6 +1,8 @@
 @extends('layout.master')
 
 @section('content')
+
+@include('partial.banner')
 <section class="page-section bg-light m-y-auto">
         <div class="container mt-5">
             <div class="text-center">
