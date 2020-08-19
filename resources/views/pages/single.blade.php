@@ -11,26 +11,32 @@
                         <h2 class="section-heading text-uppercase text-left">View Product</h2>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="checkout.html" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                        <a href="{{ route('product.index')}}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
                     </div>
                 </div>
                     <div class="">
-                        <div class="card mb-3" style="max-width: 800px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                            <img src="https://www.mydesignation.com/wp-content/uploads/2019/03/shammi-tshirt-image-unisex-mydesignation-.jpg" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                        @if ($product)
+                            <div class="card mb-3" style="max-width: ;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                <img src="{{$product->photo}}" class="card-img" alt="{{$product->id}}">
+                                </div>
+                                <div class="col-md-8">
+                                <div class="card-body">
+                                    <h3 class="card-titl">{{$product->title}}</h3>
 
-                                <h6 class="card-title">10,000</h6>
-                                <p class="card-text">Fugiat tempora voluptatibus nemo est. Possimus corporis laboriosam consectetur commodi laudantium iure. Dolor voluptatem a numquam laborum esse dignissimos. Et fugit id facilis et voluptates sapiente ut.</p>
-                                <p class="card-text mt-auto"><button class="btn btn-primary">Add to Cart</button></p>
+                                    <h6 class="card-title"><i>&#8358</i> {{ number_format($product->price, 2)}}</h6>
+                                    <h5 class="card-text text-bolder">Description</h5>
+                                    <p class="card-text"> {{$product->description}}</p>
+                                    <div class="row text-right offset-md-8" data-id="{{$product->id}} ">
+                                        <button  class="btn btn-outline-primary btn-lgt text-uppercase cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                             </div>
-                        </div>
-                        </div>
+                        @endif
+
                     </div>
             </div>
         </div>

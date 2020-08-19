@@ -16,8 +16,8 @@
                 @endif
                 <form action="{{ route('user.signup') }}" method="POST">
                     <div class="form-group">
-                        <label for="fullname">Full Name</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname">
+                        <label for="fullname">Full Name </label>
+                        <input type="text" class="form-control" name="fullname">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
@@ -28,7 +28,7 @@
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="form-group">
-                        <label for="password_confirmation">Password</label>
+                        <label for="password_confirmation">Confirm Password</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                     </div>
                     {{ csrf_field() }}

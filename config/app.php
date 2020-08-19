@@ -164,7 +164,10 @@ return [
 
         /*
          * Package Service Providers...
+         * PayStack Provider
          */
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     ],
 

@@ -24,21 +24,22 @@
                 <div class="tab-content" id="myTabContent">
                     <!-- Profile Display  -->
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <form class="pt-5">
+                        <form class="pt-5" action="{{ route('user.profile/', $profile[0]->id) }}" method="POST">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Fullname</label>
-                                <input type="text" class="form-control" id="fullname" aria-describedby="emailHelp">
+                                <input type="text" class="form-control" id="fullname" name="fullname" value="{{ $profile[0]->fullname }}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="mobile_no">Mobile No.</label>
-                                <input type="text" class="form-control" id="mobile_no">
+                                <input type="text" class="form-control" id="mobile_no" name="mobile_no" value="{{ $profile[0]->mobile_no }}">
                             </div>
                             <div class="form-group">
                                 <label for="Address">Address</label>
-                                <textarea class="form-control" id="address" rows="3"></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="3">{{ $profile[0]->address }}</textarea>
                             </div>
-                            <button type="button" id="editProfile" class="btn btn-primary">Edit Profile</button>
-                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                            {{ csrf_field() }}
+                            <button type="button" id="editBtn" class="btn btn-primary">Edit Profile</button>
+                            <button type="submit" class="btn btn-primary" id="updateBtn">Update Profile</button>
                         </form>
                     </div>
                     <!-- Ordered Items Table -->
@@ -97,3 +98,4 @@
         </div>
     </section>
 @endsection
+

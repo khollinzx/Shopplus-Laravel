@@ -8,54 +8,52 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="section-heading text-uppercase text-left">Check Out</h2>
+                    <div class="col-md-6 col-sm-4">
+                        <h2 class="section-heading text-uppercase">Check Out</h2>
                     </div>
-                    <div class="col-md-6 text-right py-3">
-                        <h4 class="text-uppercase"> Total Price: <span>&#8358;</span> 10,000</h4>
+                    <div class="col-md-6 col-sm-4 py-3">
+                        <h5 class="text-uppercase"> Total: <span>&#8358;</span>{{ number_format($totalPrice,2)}}</h5>
                     </div>
                 </div>
-                <div class="table-responsive mt-2 col-md-8 offset-2">
-                    <form>
+                <div class="table-responsive mt-2 col-md-8 offset-md-2">
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger text-center">
+                        @foreach ($errors->all() as $error)
+                        <span class=""><i class="fas fa-warning"></i> {{ $error }}</span>
+                        @endforeach
+                    </div>
+                    @endif
+                    <form method="POST" action="{{ route('pay') }}">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fullname</label>
-                            <input type="text" class="form-control" id="fullname" name="fullname">
+                            <input type="text" class="form-control" name="name" value="{{ $profile[0]->fullname}}">
+                            <input type="hidden" name="currency" value="NGN">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <input type="text" class="form-control" name="email" value="{{ Auth::user()->email }}">
+                            <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
+                            <input type="hidden" name="quantity" value="1">
                         </div>
                         <div class="form-group">
                             <label for="mobile_no">Mobile No.</label>
-                            <input type="text" class="form-control" id="mobile_no" name="">
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile_no">Card.</label>
-                            <input type="text" class="form-control" id="mobile_no" name="">
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <label for="day">Expire Date</label>
-                                <input type="number" class="form-control" id="day" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="day">Expire Year</label>
-                                <input type="number" class="form-control" id="year" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="ccv">CCV</label>
-                                <input type="number" class="form-control" id="ccv" required>
-                            </div>
+                            <input type="text" class="form-control" name="phone_no" value="{{ $profile[0]->mobile_no}}">
+                            <input type="text" name="amount" value="{{ $totalPrice.'00' }}" >
                         </div>
 
                         <div class="form-group">
-                            <label for="Address">Address</label>
-                            <textarea class="form-control" id="address" rows="3"></textarea>
+                            <input type="hidden" name="metadata" value="{{ json_encode(['amount' => $totalPrice.'00','name' => $profile[0]->fullname, 'email' => Auth::user()->email]) }}" >
+                            <label for="shipping_address">Shipping Address</label>
+                            <textarea class="form-control" name="shipping_address" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Make Payment</button>
+
+                        {{ csrf_field() }}
+                        <button type="submit" id="checkout-button" class="btn btn-primary">Make Payment</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+

@@ -14,7 +14,7 @@
                 @foreach ($chunk as $product)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#">
+                        <a class="portfolio-link" href="{{ route('product.getSingleitem', $product->id)}}">
                             <div class="portfolio-hover">
                             </div>
                             <img class="img-fluid" src="{{ $product->photo }}" alt="" />
@@ -22,8 +22,8 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{ $product->title}}</div>
                             <h4 class="portfolio-caption-subheading text-muted"><i>&#8358</i>{{ number_format($product->price,2) }}</h4>
-                            <div class="row">
-                                <button class="btn btn-outline-primary btn-lg btn-block text-uppercase"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            <div class="row" data-id="{{$product->id}} ">
+                                <button  class="btn btn-outline-primary btn-lg btn-block text-uppercase cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                 @foreach ($lowpriceProduct as $lowPrice)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#">
+                        <a class="portfolio-link" href="{{ route('product.getSingleitem', $lowPrice->id)}}">
                             <div class="portfolio-hover">
                             </div>
                             <img class="img-fluid" src="{{ $lowPrice->photo }}" alt="" />
@@ -56,6 +56,9 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$lowPrice->title}}</div>
                             <div class="portfolio-caption-subheading text-muted"><i>&#8358;</i>{{ number_format($lowPrice->price,2)}}</div>
+                            <div class="row" data-id="{{$lowPrice->id}} ">
+                                <button  class="btn btn-outline-primary btn-lg btn-block text-uppercase cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,3 +67,8 @@
         </div>
     </section>
 @endsection
+
+@section('scripts')
+<script src="{{asset('frontend/js/payments.js')}}"></script>
+@endsection
+

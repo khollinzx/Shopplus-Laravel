@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/slick/slick-theme.css') }}" />
     <link href="{{ asset('frontend/css/styles.css')}}" rel="stylesheet" />
 
-
 </head>
 
 <body id="page-top">
@@ -58,6 +57,9 @@
     <!-- Core theme JS-->
     <script src="{{ asset('frontend/js/scripts.js') }}"></script>
     <script src="{{ asset('frontend/js/sliders.js') }}"></script>
+
+    @include('sweetalert::alert')
+    @yield('scripts')
 
 </body>
 
