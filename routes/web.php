@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/', [
+    'uses' => 'Controllers\ProductController@getAllProduct',
+    'as' => 'product.index'
+]);
+
 Route::get('/shopplus', [
     'uses' => 'Controllers\ProductController@getAllProduct',
     'as' => 'product.index'
@@ -19,6 +24,11 @@ Route::get('/shopplus', [
 Route::get('/add-to-cart/{id}', [
     'uses' => 'Controllers\ProductController@getCartItems',
     'as' => 'product.addToCart'
+]);
+
+Route::get('/category/{id}', [
+    'uses' => 'Controllers\ProductController@particularProduct',
+    'as' => 'product.particularProduct'
 ]);
 
 Route::get('/product/{id}', [
@@ -103,12 +113,14 @@ Route::group(['prefix' => 'user'], function () {
 
 
 
+Route::get('/admin', [
+    'uses' => 'Controllers\ProductController@adminPage',
+    'as' => 'admin.home'
+]);
 
 Route::get('/cart', function () {
     return view('pages.cart');
 });
-
-
 
 Route::get('/checkout', function () {
     return view('pages.checkout');

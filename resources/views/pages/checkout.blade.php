@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label for="mobile_no">Mobile No.</label>
                             <input type="text" class="form-control" name="phone_no" value="{{ $profile[0]->mobile_no}}">
-                            <input type="text" name="amount" value="{{ $totalPrice.'00' }}" >
+                            <input type="hidden" name="amount" value="{{ $totalPrice.'00' }}" >
                         </div>
 
                         <div class="form-group">

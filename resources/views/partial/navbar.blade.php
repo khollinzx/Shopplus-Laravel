@@ -14,6 +14,8 @@
         <sup class="badge badge-danger cartQunatity"></sup> </a>
     </span>
       <li class="nav-item dropdown">
+            <li class="nav-item py-1 mx-1"><a class="nav-link btn btn-primary text-white" href="{{ route('admin.home')}}">Admin Route</a>
+            </li>
             @if (Auth::check())
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user-alt"></i> {{ Auth::user()->email}}
                 </a>

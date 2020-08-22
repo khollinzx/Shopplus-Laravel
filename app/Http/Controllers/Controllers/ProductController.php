@@ -16,9 +16,24 @@ class ProductController extends Controller
     public function getAllProduct()
     {
         //
-        $products = Product::paginate(6);
-        $lowpriceProduct = Product::inRandomOrder()->where("price", "<=", 8000)->limit(4)->get();
-        return view('pages.home', ['products' => $products, 'lowpriceProduct' => $lowpriceProduct]);
+        $lowpriceProduct = Product::inRandomOrder()->where("price", "<=", 5000)->limit(4)->get();
+        $shoes = Product::inRandomOrder()->where("category_id", "=", "5bafc310-c2b5-4135-909a-3f44aa3f1461")->limit(4)->get();
+        $cloths = Product::inRandomOrder()->where("category_id", "=", "a2309dab-fc1b-4ca6-8810-82ed24233842")->with('category')->limit(4)->get();
+        // dd($cloths->category);
+        return view('pages.home', ['cloths' => $cloths, 'lowpriceProduct' => $lowpriceProduct, 'shoes' => $shoes]);
+    }
+
+    public function particularProduct($id)
+    {
+        //
+        $all_product = Product::where("category_id", "=", $id)->paginate(6);
+        // dd($all_product);
+        return view('pages.particular', ['all_product' => $all_product]);
+    }
+
+    public function adminPage()
+    {
+        return view('admin.pages.index');
     }
 
     public function getCartItems(Request $request, $id)
